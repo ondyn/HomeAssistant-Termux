@@ -59,6 +59,10 @@ Run the script matter-server.sh:
 ```bash
 ./matter-server.sh
 ```
+Then, enable the Matter Integration in Home Assistant and connect them using the WebSocket URL:
+```bash
+ws://localhost:5580/ws
+```
 
 This completes the setup for running Home Assistant Core and the Matter Server on Android without root.
 
