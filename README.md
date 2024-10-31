@@ -1,104 +1,65 @@
-# Description
-Correctly configures Udocker so that it works properly in Termux.
-<br>
+## Installing Home Assistant Core on Android: Simple and Fast, No Root, No QEMU
 
-#### What's Udocker?
-It's a userspace implementation of Docker.
+Got an old Android phone and don’t want to buy a Raspberry Pi or a PC to host Home Assistant? This tutorial is for you!
 
-It means that it can, without root or custom-kernel, run Docker images and containers.
+**Requirements: Android Phone – No Root Required**
 
-And it does this without spinning up an entire qemu-VM, which makes it much, much faster than any other alternatives.
+**Credit: Special thanks to [George-Seven for the Termux-Udocker repository](https://github.com/George-Seven/Termux-Udocker).**
 
-https://f-droid.org/en/packages/com.termux/
+---
 
-https://github.com/indigo-dc/udocker
+### Step 1: Install the Termux app from F-Droid.org
 
-<br>
+**Note:**
+- Although Termux is also available on the Play Store, according to the Termux developers, the version on F-Droid is the most stable.
+- After installing Termux, it is recommended, though not required, to install OpenSSH and enable remote access from a PC for easier interaction with the Termux Terminal. For details on setting up Termux remote access, see: [Termux Remote Access Guide](https://wiki.termux.com/wiki/Remote_Access).
 
-# Instructions
-In Termux -
+### Step 2: Install Git in Termux:
 
-```
-git clone --depth 1 https://github.com/George-Seven/Termux-Udocker ~/Termux-Udocker
-```
-```
-bash ~/Termux-Udocker/install_udocker.sh
-```
-And done.
+```bash
+# Update & Upgrade Termux packages
+pkg update && pkg upgrade
 
-#### Help text
-```
-udocker --help
+# Install git
+pkg install git
 ```
 
-#### Keep it updated
-```
-cd ~/Termux-Udocker; git pull
-```
-<br>
+### Step 3: Install HomeAssistant-Termux
 
-### Examples
-Here are example scripts provided for some popular Docker images -
-#### Name: Stirling PDF (frooodle/s-pdf:latest)
-```
-~/Termux-Udocker/s-pdf.sh
+
+```bash
+git clone https://github.com/huytungst/HomeAssistant-Termux.git
 ```
 
-Connect to it at - [http://localhost:8080](http://localhost:8080)
+Go to the root directory of HomeAssistant-Termux:
 
-<br>
-
-#### Name: Nextcloud (nextcloud:latest)
-```
-~/Termux-Udocker/nextcloud.sh
+```bash
+cd HomeAssistant-Termux
 ```
 
-Connect to it at - [http://localhost:2080](http://localhost:2080)
+Install Udocker from the cloned repository:
 
-<br>
-
-#### Name: ownCloud (owncloud/server:latest)
-```
-~/Termux-Udocker/owncloud.sh
+```bash
+./install_udocker.sh
 ```
 
-Connect to it at - [http://localhost:2081](http://localhost:2081)
+Run the script home-assistant-core.sh:
 
-<br>
-
-#### Name: HTTPD (httpd:latest)
-```
-~/Termux-Udocker/httpd.sh
+```bash
+./home-assistant-core.sh
 ```
 
-Connect to it at - [http://localhost:2082](http://localhost:2082)
+## Wait about 10 minutes, then you can access Home Assistant on port 8123 (http://localhost:8123/)
 
-<br>
+**Also, you can install and run the Python Matter Server to enable Matter compatibility.**
 
-#### Name: Redis (redis:latest)
-```
-~/Termux-Udocker/redis.sh
-```
 
-Connect to it at - [http://localhost:6379](http://localhost:6379)
+Run the script matter-server.sh:
 
-<br>
-
-### Customize
-#### Change Port
-```
-PORT=9080 ~/Termux-Udocker/s-pdf.sh
+```bash
+./matter-server.sh
 ```
 
-Add `PORT=number` before the script. Port must be from 1024~65535.
+This completes the setup for running Home Assistant Core and the Matter Server on Android without root.
 
-<br>
-
-#### Run custom commands
-```
-~/Termux-Udocker/s-pdf.sh 'echo hello world; echo hi'
-```
-
-To override the default startup commands with your own, add your commands after the script like so.
-
-<br>
+### !!! Known Issue: Home Assistant setup failed for some dependencies, including 'bluetooth,' 'usb,' 'zeroconf,' etc. Any help would be appreciated!
