@@ -28,7 +28,7 @@ pkg install git
 
 Clone  HomeAssistant-Termux:
 ```bash
-git clone https://github.com/huytungst/HomeAssistant-Termux.git
+git clone https://github.com/ondyn/HomeAssistant-Termux.git
 ```
 
 Go to the root directory of HomeAssistant-Termux:
