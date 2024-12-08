@@ -2,7 +2,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/source.env"
 
 # The script will find and download the image from Docker Hub, not from GitHub Container Registry
-IMAGE_NAME="homeassistant/home-assistant:2024.9"
+IMAGE_NAME="homeassistant/home-assistant:2024.3"
 CONTAINER_NAME="home-assistant-core"
 
 # Set timezone, eg, Asia/Seoul. Feel free to change.
